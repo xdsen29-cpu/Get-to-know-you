@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff4f8">
+<title>Get to Know You 💗</title>
+<style>
+:root{--pink:#ef6b9a;--rose:#bd4778;--ink:#382b39;--muted:#796a78;--cream:#fff8fb;--line:#f2dce6}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 8% 5%,#ffe1ed 0,transparent 30%),radial-gradient(circle at 92% 25%,#f2e6ff 0,transparent 28%),var(--cream);min-height:100vh}
+.wrap{width:min(760px,100%);margin:auto;padding:24px 16px 48px}.hero{text-align:center;padding:30px 18px 22px}.heart{display:inline-grid;place-items:center;width:66px;height:66px;border-radius:22px;background:#ffe1ed;font-size:32px;box-shadow:0 8px 24px #df8bb333}.eyebrow{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);font-weight:800;margin:18px 0 8px}h1{font-size:clamp(2rem,7vw,3.4rem);line-height:1.05;letter-spacing:-.04em;margin:0}h1 span{color:var(--rose)}.intro{color:var(--muted);line-height:1.65;max-width:490px;margin:14px auto 0}.progress-wrap{height:7px;background:#f3e4eb;border-radius:20px;overflow:hidden;margin:14px 0 20px}.progress{height:100%;width:0;background:linear-gradient(90deg,#ef6b9a,#b57be5);transition:width .25s}.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:.82rem;margin-top:24px}.card{background:#ffffffd9;border:1px solid var(--line);border-radius:24px;padding:clamp(18px,4vw,28px);box-shadow:0 14px 42px #a74d7410;margin-bottom:16px}.question-top{display:flex;gap:12px;align-items:flex-start}.num{flex:none;width:38px;height:38px;border-radius:13px;background:#ffebf2;color:var(--rose);display:grid;place-items:center;font-weight:800}.qtitle{font-size:1.08rem;font-weight:750;margin:5px 0 5px}.hint{font-size:.88rem;color:var(--muted);margin:0 0 16px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice span{display:block;border:1px solid #ecd9e3;background:#fffafd;border-radius:14px;padding:12px;text-align:center;cursor:pointer;transition:.18s;font-size:.94rem}.choice input:checked+span{border-color:var(--pink);background:#fff0f6;box-shadow:0 0 0 2px #f7c4d8}.choice span:hover{border-color:#e9a6c0}input[type=text],textarea,select{width:100%;border:1px solid #ead7e1;border-radius:14px;padding:13px 14px;font:inherit;background:#fffafd;color:var(--ink);outline:none}textarea{min-height:92px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:var(--pink);box-shadow:0 0 0 3px #f9dce8}.field{margin-top:12px}.field label{display:block;font-weight:650;font-size:.9rem;margin:0 0 8px}.btns{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.btn{border:0;border-radius:15px;padding:14px 18px;font:inherit;font-weight:750;cursor:pointer;transition:transform .15s}.btn:active{transform:scale(.98)}.primary{background:linear-gradient(100deg,#ef6b9a,#c75f9d);color:white;box-shadow:0 8px 18px #d96c9b33;flex:1}.secondary{background:#fff;border:1px solid var(--line);color:var(--rose)}.small{font-size:.82rem;color:var(--muted);text-align:center;line-height:1.55}.result{display:none}.result h2{margin-top:0}.answer-row{border-bottom:1px solid var(--line);padding:12px 0}.answer-row:last-child{border:0}.answer-row strong{display:block;font-size:.9rem;margin-bottom:5px}.answer-row p{margin:0;color:var(--muted);white-space:pre-wrap;overflow-wrap:anywhere}.footer{text-align:center;color:#8b7885;font-size:.82rem;padding-top:8px}.sparkle{color:var(--rose)}@media(max-width:440px){.choices{grid-template-columns:1fr}.hero{padding-top:18px}.card{border-radius:20px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+  <div class="heart">💗</div>
+  <p class="eyebrow">A little friendship questionnaire</p>
+  <h1>Get to Know <span>You</span></h1>
+  <p class="intro">A few fun questions about your interests, dreams and UPSC journey. Answer only what you feel comfortable sharing. ✨</p>
+</header>
+<div class="progress-label"><span>Your answers</span><span id="progressText">0 of 11 answered</span></div>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<form id="quizForm">
+<section class="card">
+ <div class="question-top"><div class="num">01</div><div><p class="qtitle">Which is your favourite post?</p><p class="hint">Choose a role you would love to work toward.</p></div></div>
+ <div class="choices" data-group="post">
+  <label class="choice"><input type="radio" name="post" value="IAS"><span>🏛️ IAS</span></label>
+  <label class="choice"><input type="radio" name="post" value="IPS"><span>🛡️ IPS</span></label>
+  <label class="choice"><input type="radio" name="post" value="IFS"><span>🌍 IFS</span></label>
+  <label class="choice"><input type="radio" name="post" value="Other / still deciding"><span>✨ Other / deciding</span></label>
+ </div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">02</div><div><p class="qtitle">Which is your favourite optional subject?</p><p class="hint">It's okay if you haven't decided yet.</p></div></div>
+ <div class="field"><select name="optional"><option value="">Select a subject (optional)</option><option>Anthropology</option><option>Geography</option><option>History</option><option>Political Science & International Relations</option><option>Sociology</option><option>Public Administration</option><option>Other</option><option>Not decided yet</option></select></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">03</div><div><p class="qtitle">What books or previous-year question papers do you recommend?</p><p class="hint">Share your favourite book list or study resource.</p></div></div>
+ <div class="field"><textarea name="books" placeholder="e.g. NCERT books, PYQs, your favourite author…"></textarea></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">04</div><div><p class="qtitle">Who is your ideal or inspiration?</p><p class="hint">Someone whose work or qualities inspire you.</p></div></div>
+ <div class="field"><input type="text" name="ideal" placeholder="Write a name or a few words…"></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">05</div><div><p class="qtitle">Where are you from?</p><p class="hint">This is optional—share only if you're comfortable.</p></div></div>
+ <div class="field"><input type="text" name="place" placeholder="City or state (optional)"></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">06</div><div><p class="qtitle">What is your purpose behind preparing for UPSC?</p><p class="hint">What motivates you to keep going?</p></div></div>
+ <div class="field"><textarea name="purpose" placeholder="Your dream, motivation or goal…"></textarea></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">07</div><div><p class="qtitle">How could we prepare for UPSC together?</p><p class="hint">Ideas for studying, sharing notes or motivating each other.</p></div></div>
+ <div class="field"><textarea name="together" placeholder="e.g. weekly targets, mock tests, sharing notes…"></textarea></div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">08</div><div><p class="qtitle">Should we study online together?</p><p class="hint">Choose what would work best for you.</p></div></div>
+ <div class="choices" data-group="online">
+  <label class="choice"><input type="radio" name="online" value="Yes, let's study online together"><span>💻 Yes, let's do it</span></label>
+  <label class="choice"><input type="radio" name="online" value="Maybe, let's plan it"><span>🌷 Maybe, let's plan</span></label>
+  <label class="choice"><input type="radio" name="online" value="I'd rather study independently"><span>📚 Study independently</span></label>
+  <label class="choice"><input type="radio" name="online" value="Not sure yet"><span>✨ Not sure yet</span></label>
+ </div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">09</div><div><p class="qtitle">When would you like to study together?</p><p class="hint">Optional—pick a time that suits you both.</p></div></div>
+ <div class="choices" data-group="studytime">
+  <label class="choice"><input type="radio" name="studytime" value="Morning"><span>🌅 Morning</span></label>
+  <label class="choice"><input type="radio" name="studytime" value="Afternoon"><span>☀️ Afternoon</span></label>
+  <label class="choice"><input type="radio" name="studytime" value="Evening"><span>🌇 Evening</span></label>
+  <label class="choice"><input type="radio" name="studytime" value="Flexible"><span>🕒 Flexible</span></label>
+ </div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">10</div><div><p class="qtitle">What should our first online study session include?</p><p class="hint">Choose a simple way to get started.</p></div></div>
+ <div class="choices" data-group="firstsession">
+  <label class="choice"><input type="radio" name="firstsession" value="Discuss current affairs"><span>📰 Current affairs</span></label>
+  <label class="choice"><input type="radio" name="firstsession" value="Revise NCERT"><span>📖 NCERT revision</span></label>
+  <label class="choice"><input type="radio" name="firstsession" value="Solve previous-year questions"><span>📝 Previous-year questions</span></label>
+  <label class="choice"><input type="radio" name="firstsession" value="Plan a study timetable"><span>🗓️ Study timetable</span></label>
+ </div>
+</section>
+<section class="card">
+ <div class="question-top"><div class="num">11</div><div><p class="qtitle">Any message or suggestion for our UPSC journey?</p><p class="hint">Write anything you'd like to share.</p></div></div>
+ <div class="field"><textarea name="message" placeholder="A thought, idea or friendly message…"></textarea></div>
+</section>
+<div class="field">
+  <label for="friendName">Your name (optional)</label>
+  <input type="text" id="friendName" name="friendName" maxlength="80" placeholder="What should your friend call you?">
+</div>
+<div class="btns"><button class="btn primary" type="submit" id="submitBtn">Submit answers 💌</button><button class="btn secondary" type="reset" id="resetBtn">Start again</button></div>
+<p class="small" id="submitStatus" aria-live="polite">When online saving is configured, submitted answers will be saved to the owner's private Google Sheet. Avoid sharing sensitive personal information.</p>
+</form>
+<section class="card result" id="result" aria-live="polite">
+ <p class="eyebrow">Your lovely answers</p><h2>Thanks for sharing! <span class="sparkle">✦</span></h2>
+ <div id="answerList"></div>
+ <div class="btns"><button class="btn primary" id="downloadBtn" type="button">Save answers as text</button><button class="btn secondary" id="editBtn" type="button">Edit answers</button></div>
+ <p class="small">Share only what you're happy for your friend to read.</p>
+</section>
+<footer class="footer">Made with 💗 for good conversations and big dreams.</footer>
+</main>
+<script>
+const form=document.getElementById('quizForm');
+const progress=document.getElementById('progress');
+const progressText=document.getElementById('progressText');
+const questions=[
+ ['post','Which is your favourite post?'],['optional','Which is your favourite optional subject?'],
+ ['books','What books or previous-year question papers do you recommend?'],['ideal','Who is your ideal or inspiration?'],
+ ['place','Where are you from?'],['purpose','What is your purpose behind preparing for UPSC?'],
+ ['together','How could we prepare for UPSC together?'],['online','Should we study online together?'],
+ ['studytime','When would you like to study together?'],['firstsession','What should our first online study session include?'],
+ ['message','Any message or suggestion for our UPSC journey?']
+];
+function getAnswers(){const data=new FormData(form);return [{key:'friendName',label:'Your name',value:(data.get('friendName')||'').toString().trim()},...questions.map(([key,label])=>({key,label,value:(data.get(key)||'').toString().trim()}))]}
+function updateProgress(){const a=getAnswers().filter(x=>x.key!=='friendName');const count=a.filter(x=>x.value).length;progress.style.width=(count/11*100)+'%';progressText.textContent=count+' of 11 answered'}
+form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);
+const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+form.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const answers=getAnswers();
+ const box=document.getElementById('answerList');box.replaceChildren();
+ answers.forEach(a=>{const row=document.createElement('div');row.className='answer-row';const strong=document.createElement('strong');strong.textContent=a.label;const p=document.createElement('p');p.textContent=a.value||'Not answered';row.append(strong,p);box.append(row)});
+ const status=document.getElementById('submitStatus');
+ const btn=document.getElementById('submitBtn');
+ if(SCRIPT_URL==='PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'){
+   status.textContent='This website is not connected to online saving yet. Your answers are shown here only. Ask the website owner to finish the Google Apps Script setup.';
+   form.style.display='none';document.getElementById('result').style.display='block';document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});return;
+ }
+ btn.disabled=true;btn.textContent='Submitting…';status.textContent='Sending your answers…';
+ try{
+   const payload=new URLSearchParams();
+   answers.forEach(a=>payload.append(a.key,a.value));
+   payload.append('submittedAt',new Date().toISOString());
+   await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
+   status.textContent='Your answers were sent. The browser cannot verify the server response, so ask the owner to check the Google Sheet.';
+   form.style.display='none';document.getElementById('result').style.display='block';document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(err){
+   status.textContent='Could not send answers. Check your internet connection and try again.';
+   btn.disabled=false;btn.textContent='Try submitting again 💌';
+ }
+});
+document.getElementById('editBtn').addEventListener('click',()=>{document.getElementById('result').style.display='none';form.style.display='block';form.scrollIntoView({behavior:'smooth',block:'start'})});
+document.getElementById('resetBtn').addEventListener('click',()=>{setTimeout(()=>{updateProgress();document.getElementById('result').style.display='none';form.style.display='block';document.getElementById('submitStatus').textContent='When online saving is configured, submitted answers will be saved to the owner\'s private Google Sheet.';document.getElementById('submitBtn').disabled=false;document.getElementById('submitBtn').textContent='Submit answers 💌'},0)});
+document.getElementById('downloadBtn').addEventListener('click',()=>{const text=getAnswers().map(a=>a.label+'\n'+(a.value||'Not answered')).join('\n\n');const blob=new Blob([text],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='my-answers.txt';link.click();URL.revokeObjectURL(url)});
+updateProgress();
+</script>
+</body>
+</html>
