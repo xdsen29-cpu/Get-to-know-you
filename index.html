@@ -116,7 +116,7 @@ const questions=[
 function getAnswers(){const data=new FormData(form);return [{key:'friendName',label:'Your name',value:(data.get('friendName')||'').toString().trim()},...questions.map(([key,label])=>({key,label,value:(data.get(key)||'').toString().trim()}))]}
 function updateProgress(){const a=getAnswers().filter(x=>x.key!=='friendName');const count=a.filter(x=>x.value).length;progress.style.width=(count/11*100)+'%';progressText.textContent=count+' of 11 answered'}
 form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);
-const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdbhJOeB_SeO1B1p17ejHW3dVwqRBDbnxVYI6n7ox0FMfD8LOmBA3LBr8grtJYRrkx/exec';
 form.addEventListener('submit',async e=>{
  e.preventDefault();
  const answers=getAnswers();
@@ -124,7 +124,7 @@ form.addEventListener('submit',async e=>{
  answers.forEach(a=>{const row=document.createElement('div');row.className='answer-row';const strong=document.createElement('strong');strong.textContent=a.label;const p=document.createElement('p');p.textContent=a.value||'Not answered';row.append(strong,p);box.append(row)});
  const status=document.getElementById('submitStatus');
  const btn=document.getElementById('submitBtn');
- if(SCRIPT_URL==='PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'){
+ if(SCRIPT_URL=== 'https://script.google.com/macros/s/AKfycbwdbhJOeB_SeO1B1p17ejHW3dVwqRBDbnxVYI6n7ox0FMfD8LOmBA3LBr8grtJYRrkx/exec'){
    status.textContent='This website is not connected to online saving yet. Your answers are shown here only. Ask the website owner to finish the Google Apps Script setup.';
    form.style.display='none';document.getElementById('result').style.display='block';document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});return;
  }
